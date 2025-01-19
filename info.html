@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info - AMOS Challenge 2022</title>
+    <!-- 复制相同的样式 -->
+    <style>
+        /* 复制 organizers.html 中的所有样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(to right, #7FBFB0 0%, #6DAA9C 100%);
+            --hover-gradient: linear-gradient(to right, #6DAA9C 0%, #5C9183 100%);
+            --text-primary: #2C3E50;
+            --text-secondary: #7F8C8D;
+            --link-color: #3498DB;
+            --background-light: #ffffff;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ... 复制其他所有基础样式 ... */
+
+        /* Info 页面特定样式 */
+        .info-section {
+            margin-bottom: 50px;
+        }
+
+        .info-section h2 {
+            color: var(--text-primary);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .info-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .timeline-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .timeline-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timeline-list li:last-child {
+            border-bottom: none;
+        }
+
+        .citation-block {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logo.png" alt="AMOS" class="logo">
+            </div>
+            
+            <div class="content-section">
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <div class="nav-item">
+                        <a href="info.html" class="active">Info</a>
+                        <div class="dropdown-content">
+                            <a href="#motivation">Motivation</a>
+                            <a href="#timeline">Timeline</a>
+                            <a href="#citation">Citation</a>
+                        </div>
+                    </div>
+                    <a href="forum.html">Forum</a>
+                    <div class="nav-item">
+                        <a href="dataset.html">Dataset</a>
+                        <div class="dropdown-content">
+                            <a href="dataset.html#download">Download</a>
+                            <a href="dataset.html#evaluation">Evaluation</a>
+                            <a href="dataset.html#rules">Rules</a>
+                            <a href="dataset.html#instructions">Instructions</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="tasks.html">Tasks</a>
+                        <div class="dropdown-content">
+                            <a href="tasks.html#task1">Task 1 - CT Segmentation</a>
+                            <a href="tasks.html#task2">Task 2 - CT & MRI Segmentation</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="evaluation.html">Evaluation</a>
+                        <div class="dropdown-content">
+                            <a href="evaluation.html#leaderboards">Leaderboards</a>
+                            <a href="evaluation.html#statistics">Statistics</a>
+                            <a href="evaluation.html#submit">Submit Results</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <section id="motivation" class="info-section">
+            <h1 class="section-title">Motivation</h1>
+            <p>Abdominal multi-organ segmentation is one of the most attractive topics in the field of medical image analysis, which plays an important role in supporting clinical workflows such as disease diagnosis and treatment planning.</p>
+            <p>The recent success of deep learning methods applied for abdominal multi-organ segmentation exposes the lack of large-scale comprehensive benchmarks for developing and comparing such methods.</p>
+        </section>
+
+        <section id="timeline" class="info-section">
+            <h2>Timeline</h2>
+            <ul class="timeline-list">
+                <li>Expected Website Full Open: April 15, 2022</li>
+                <li>Expected Training Set Released: May 1, 2022</li>
+                <li>Expected Validation Set Released: May 1, 2022</li>
+                <li>Expected First Stage Submission Open: May 10, 2022</li>
+                <li>Expected First stage Deadline: July 17, 2022</li>
+                <li>Expected Submission of Short Papers: July 22, 2022</li>
+                <li>Expected Announcement of Results: Aug 15, 2022</li>
+            </ul>
+        </section>
+
+        <section id="citation" class="info-section">
+            <h2>Citation</h2>
+            <pre class="citation-block">@article{ji2022amos,
+    title={AMOS: A Large-Scale Abdominal Multi-Organ Benchmark for Versatile Medical Image Segmentation},
+    author={Ji, Yuanfeng and Bai, Haotian and Yang, Jie and Ge, Chongjian and Zhu, Ye and Zhang, Ruimao and Li, Zhen and Zhang, Lingyan and Ma, Wanling and Wan, Xiang and others},
+    journal={arXiv preprint arXiv:2206.08023},
+    year={2022}
+}</pre>
+        </section>
+    </main>
+</body>
+</html> 

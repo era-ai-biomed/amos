@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMOS22 Challenge</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* 页面特定样式 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr 1fr;
+            gap: 40px;
+            justify-content: start;
+        }
+
+        /* News section */
+        .news-section {
+            grid-column: 1 / -1;
+        }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .news-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .news-list li::before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: #7FBFB0;
+        }
+
+        .news-list a {
+            color: #3498DB;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .news-list a:hover {
+            color: #2980B9;
+        }
+
+        /* Column styles */
+        .column {
+            font-size: 0.85em;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .column:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .column h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        /* Features list */
+        .features-list {
+            list-style: none;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95em;
+            font-weight: 300;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .checkmark {
+            color: #7FBFB0;
+        }
+
+        /* Collaborators list */
+        .collaborators-list {
+            list-style: none;
+            padding: 0;
+            display: block;
+        }
+
+        .collaborators-list li {
+            padding: 6px 0;
+            transition: all 0.2s ease;
+            line-height: 1.3;
+            font-size: 0.95em;
+            font-weight: 300;
+        }
+
+        .collaborators-list li:hover {
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        /* Sponsors list */
+        .sponsors-list {
+            display: block;
+        }
+
+        .sponsor-logo {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+            margin: 1px 0;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.85;
+        }
+
+        .sponsor-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-header">
+        <div class="header-container">
+            <!-- 左侧 logo -->
+            <div class="logo-section">
+                <img src="logo.png" alt="COCO" class="logo">
+            </div>
+            
+            <!-- 右侧内容 -->
+            <div class="content-section">
+                <nav class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="people.html">People</a>
+                    <div class="nav-item">
+                        <a href="dataset.html">Dataset</a>
+                        <div class="dropdown-content">
+                            <a href="dataset.html#overview">Overview</a>
+                            <a href="dataset.html#download">Download</a>
+                            <a href="dataset.html#evaluation">Evaluation</a>
+                            <a href="dataset.html#rules">Rules</a>
+                            <a href="dataset.html#instructions">Instructions</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="tasks.html">Tasks</a>
+                        <div class="dropdown-content">
+                            <a href="tasks.html#task1">Task1 CT Seg</a>
+                            <a href="tasks.html#task2">Task2 CT-MRI Seg</a>
+                            <a href="tasks.html#task3">Task3 Report</a>
+                            <a href="tasks.html#task4">Task4 VQA</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="evaluate.html">Evaluate</a>
+                        <div class="dropdown-content">
+                            <a href="evaluate.html#leaderboards">Leaderboards</a>
+                            <a href="evaluate.html#statistics">Statistics</a>
+                            <a href="evaluate.html#submit">Submit Results</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <!-- News section -->
+        <section class="news-section">
+            <h1 class="section-title">News</h1>
+            <ul class="news-list">
+                <li>We are pleased to announce the <a href="#">LVIS 2021 Challenge and Workshop</a> to be held at ICCV.</li>
+                <li>Please note that there will not be a COCO 2021 Challenge, instead, we encourage people to participate in the LVIS 2021 Challenge.</li>
+                <li>We have partnered with the team behind the open-source tool <a href="#">FiftyOne</a> to make it easier to download, visualize, and evaluate COCO</li>
+                <li><a href="#">FiftyOne</a> is an open-source tool facilitating visualization and access to COCO data resources and serves as an evaluation tool for model analysis on COCO.</li>
+            </ul>
+        </section>
+
+        <!-- What is COCO column -->
+        <div class="column">
+            <h2>What is COCO?</h2>
+            <p>COCO is a large-scale object detection, segmentation, and captioning dataset.</p>
+            <p>COCO has several features:</p>
+            <ul class="features-list">
+                <li><span class="checkmark">✓</span> Object segmentation</li>
+                <li><span class="checkmark">✓</span> Recognition in context</li>
+                <li><span class="checkmark">✓</span> Superpixel stuff segmentation</li>
+                <li><span class="checkmark">✓</span> 330K images (>200K labeled)</li>
+                <li><span class="checkmark">✓</span> 1.5 million object instances</li>
+                <li><span class="checkmark">✓</span> 80 object categories</li>
+                <li><span class="checkmark">✓</span> 91 stuff categories</li>
+                <li><span class="checkmark">✓</span> 5 captions per image</li>
+                <li><span class="checkmark">✓</span> 250,000 people with keypoints</li>
+            </ul>
+        </div>
+
+        <!-- Collaborators column -->
+        <div class="column">
+            <h2>Collaborators</h2>
+            <ul class="collaborators-list">
+                <li>Tsung-Yi Lin - Google Brain</li>
+                <li>Genevieve Patterson - MSR, Trash TV</li>
+                <li>Matteo R. Ronchi - Caltech</li>
+                <li>Yin Cui - Google</li>
+                <li>Michael Maire - TTI-Chicago</li>
+                <li>Serge Belongie - Cornell Tech</li>
+                <li>Lubomir Bourdev - WaveOne, Inc.</li>
+                <li>Ross Girshick - FAIR</li>
+                <li>James Hays - Georgia Tech</li>
+                <li>Pietro Perona - Caltech</li>
+                <li>Deva Ramanan - CMU</li>
+                <li>Larry Zitnick - FAIR</li>
+            </ul>
+        </div>
+
+        <!-- Sponsors column -->
+        <div class="column">
+            <h2>Sponsors</h2>
+            <div class="sponsors-list">
+                <img src="https://via.placeholder.com/200x80/eee/999?text=CVDF" class="sponsor-logo">
+                <img src="https://via.placeholder.com/200x60/eee/999?text=Microsoft" class="sponsor-logo">
+                <img src="https://via.placeholder.com/200x70/eee/999?text=Facebook" class="sponsor-logo">
+                <img src="https://via.placeholder.com/200x65/eee/999?text=Mighty+AI" class="sponsor-logo">
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

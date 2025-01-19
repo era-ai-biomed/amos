@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset - AMOS Challenge 2022</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* Dataset 页面特定样式 */
+        .dataset-section {
+            margin-bottom: 60px;
+        }
+
+        .dataset-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkmark {
+            color: #2ECC71;
+            font-weight: bold;
+        }
+
+        .download-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            background: var(--hover-gradient);
+            transform: translateY(-2px);
+        }
+
+        .rules-list {
+            list-style: decimal;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .rules-list li {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .instructions-list {
+            list-style: decimal;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-header">
+        <div class="header-container">
+            <!-- 左侧 logo -->
+            <div class="logo-section">
+                <img src="logo.png" alt="AMOS" class="logo">
+            </div>
+            
+            <!-- 右侧内容 -->
+            <div class="content-section">
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="people.html">People</a>
+                    <div class="nav-item">
+                        <a href="dataset.html" class="active">Dataset</a>
+                        <div class="dropdown-content">
+                            <a href="dataset.html#overview">Overview</a>
+                            <a href="dataset.html#download">Download</a>
+                            <a href="dataset.html#evaluation">Evaluation</a>
+                            <a href="dataset.html#rules">Rules</a>
+                            <a href="dataset.html#instructions">Instructions</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="tasks.html">Tasks</a>
+                        <div class="dropdown-content">
+                            <a href="tasks.html#task1">Task1 CT Seg</a>
+                            <a href="tasks.html#task2">Task2 CT-MRI Seg</a>
+                            <a href="tasks.html#task3">Task3 Report</a>
+                            <a href="tasks.html#task4">Task4 VQA</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="evaluate.html">Evaluate</a>
+                        <div class="dropdown-content">
+                            <a href="evaluate.html#leaderboards">Leaderboards</a>
+                            <a href="evaluate.html#statistics">Statistics</a>
+                            <a href="evaluate.html#submit">Submit Results</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="dataset-section">
+            <h1 class="section-title">Dataset Overview</h1>
+            <!-- AMOS22 Dataset -->
+            <div class="column">
+                <h2>AMOS22 Dataset</h2>
+                <p>Multi-organ segmentation dataset for CT and MRI modalities (Task1 & Task2):</p>
+                <ul class="features-list">
+                    <li><span class="checkmark">✓</span> 500 CT scans from multiple centers</li>
+                    <li><span class="checkmark">✓</span> 100 MRI scans</li>
+                    <li><span class="checkmark">✓</span> 15 abdominal organs annotated</li>
+                    <li><span class="checkmark">✓</span> High-quality manual annotations</li>
+                    <li><span class="checkmark">✓</span> Multi-center data collection</li>
+                </ul>
+            </div>
+
+            <!-- AMOS-MM Dataset -->
+            <div class="column">
+                <h2>AMOS-MM Dataset</h2>
+                <p>Multimodal dataset for report generation and visual QA (Task3 & Task4):</p>
+                <ul class="features-list">
+                    <li><span class="checkmark">✓</span> Medical images with corresponding reports</li>
+                    <li><span class="checkmark">✓</span> Clinical question-answer pairs</li>
+                    <li><span class="checkmark">✓</span> Expert-validated annotations</li>
+                    <li><span class="checkmark">✓</span> Structured report templates</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="dataset-section">
+            <h2 class="section-title">Download Dataset</h2>
+            
+            <!-- AMOS22 Downloads -->
+            <div class="column">
+                <h3>AMOS22 Dataset</h3>
+                <div class="download-links">
+                    <a href="#" class="download-button">Training Set (CT)</a>
+                    <a href="#" class="download-button">Training Set (MRI)</a>
+                    <a href="#" class="download-button">Validation Set</a>
+                    <a href="#" class="download-button">Test Set</a>
+                </div>
+            </div>
+
+            <!-- AMOS-MM Downloads -->
+            <div class="column">
+                <h3>AMOS-MM Dataset</h3>
+                <div class="download-links">
+                    <a href="#" class="download-button">Report Generation Data</a>
+                    <a href="#" class="download-button">VQA Data</a>
+                    <a href="#" class="download-button">Validation Set</a>
+                    <a href="#" class="download-button">Test Set</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evaluation Section -->
+        <section id="evaluation" class="dataset-section">
+            <h2 class="section-title">Evaluation Protocol</h2>
+            
+            <!-- AMOS22 Evaluation -->
+            <div class="column">
+                <h3>AMOS22 Metrics</h3>
+                <ul class="features-list">
+                    <li><span class="checkmark">✓</span> Dice Similarity Coefficient (DSC)</li>
+                    <li><span class="checkmark">✓</span> Normalized Surface Distance (NSD)</li>
+                    <li><span class="checkmark">✓</span> Average Symmetric Surface Distance (ASD)</li>
+                </ul>
+            </div>
+
+            <!-- AMOS-MM Evaluation -->
+            <div class="column">
+                <h3>AMOS-MM Metrics</h3>
+                <ul class="features-list">
+                    <li><span class="checkmark">✓</span> Natural Language Generation metrics</li>
+                    <li><span class="checkmark">✓</span> Clinical accuracy assessment</li>
+                    <li><span class="checkmark">✓</span> Answer accuracy and relevance</li>
+                    <li><span class="checkmark">✓</span> Response completeness</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Rules Section -->
+        <section id="rules" class="dataset-section">
+            <h2 class="section-title">Competition Rules</h2>
+            <ol class="rules-list">
+                <li>Teams must register before downloading any dataset</li>
+                <li>Maximum 5 submissions per day during the validation phase</li>
+                <li>Final results must be accompanied by a technical report</li>
+                <li>Code must be made publicly available after the challenge</li>
+                <li>Teams can participate in any or all tasks</li>
+                <li>Separate submissions required for each task</li>
+            </ol>
+        </section>
+
+        <!-- Instructions Section -->
+        <section id="instructions" class="dataset-section">
+            <h2 class="section-title">Instructions</h2>
+            
+            <!-- AMOS22 Instructions -->
+            <div class="column">
+                <h3>AMOS22 Data Format</h3>
+                <ul class="features-list">
+                    <li><span class="checkmark">✓</span> 3D volumes in NIFTI format</li>
+                    <li><span class="checkmark">✓</span> Standard orientation</li>
+                    <li><span class="checkmark">✓</span> Preprocessed and aligned</li>
+                </ul>
+            </div>
+
+            <!-- AMOS-MM Instructions -->
+            <div class="column">
+                <h3>AMOS-MM Data Format</h3>
+                <ul class="features-list">
+                    <li><span class="checkmark">✓</span> JSON format for reports and QA pairs</li>
+                    <li><span class="checkmark">✓</span> Structured report templates</li>
+                    <li><span class="checkmark">✓</span> Standardized QA format</li>
+                </ul>
+            </div>
+
+            <h3>Getting Started</h3>
+            <ol class="instructions-list">
+                <li>Register on the platform</li>
+                <li>Choose your tasks of interest</li>
+                <li>Download the corresponding datasets</li>
+                <li>Read the detailed documentation</li>
+                <li>Start developing your solution</li>
+            </ol>
+        </section>
+    </main>
+</body>
+</html> 

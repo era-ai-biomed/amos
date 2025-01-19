@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COCO - Common Objects in Context</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 添加全局变量 */
+        :root {
+            --primary-gradient: linear-gradient(to right, #7FBFB0 0%, #6DAA9C 100%);
+            --hover-gradient: linear-gradient(to right, #6DAA9C 0%, #5C9183 100%);
+            --text-primary: #2C3E50;
+            --text-secondary: #7F8C8D;
+            --link-color: #3498DB;
+            --background-light: #ffffff;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 修改全局样式 */
+        body {
+            font-family: "Söhne", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-light);
+        }
+
+        /* 修改header样式 */
+        .site-header {
+            background: #000000;
+            padding: 35px 0 10px 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-end;
+        }
+
+        /* 左侧 logo */
+        .logo-section {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .logo {
+            width: 275px;
+            height: auto;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.9;
+        }
+
+        /* 右侧内容区域 */
+        .content-section {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            max-width: 500px;
+            min-width: auto;
+        }
+
+        /* 导航栏 */
+        .nav-links {
+            display: flex;
+            gap: 0px;
+            justify-content: flex-end;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 8px 16px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            border-radius: 4px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .nav-links a.active {
+            background: #00DC82;
+            border-top: none;
+            color: #000000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-links a:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .nav-links a[href="#dataset"]::after,
+        .nav-links a[href="#tasks"]::after,
+        .nav-links a[href="#evaluate"]::after {
+            content: "▾";
+            margin-left: 5px;
+            font-size: 14px;
+            opacity: 0.8;
+            display: inline-block;
+        }
+
+        /* Main content styles */
+        .main-content {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.25fr 1fr 1fr;
+            gap: 40px;
+            justify-content: start;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        /* News section */
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .news-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .news-list li::before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: #7FBFB0;
+        }
+
+        .news-list a {
+            color: #3498DB;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .news-list a:hover {
+            color: #2980B9;
+        }
+
+        /* News section */
+        .news-section {
+            grid-column: 1 / -1;
+        }
+
+        /* What is COCO section */
+        .what-is-coco {
+            margin-top: 0;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95em;
+            font-weight: 300;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .checkmark {
+            color: #7FBFB0;
+        }
+
+        /* Collaborators and Sponsors */
+        .bottom-sections {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .collaborators-list, .sponsors-list {
+            list-style: none;
+        }
+
+        .collaborators-list {
+            list-style: none;
+            padding: 0;
+            display: block;
+        }
+
+        .collaborators-list li {
+            padding: 6px 0;
+            transition: all 0.2s ease;
+            line-height: 1.3;
+            font-size: 0.95em;
+            font-weight: 300;
+        }
+
+        .collaborators-list li:hover {
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        .sponsor-logo {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+            margin: 1px 0;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.85;
+        }
+
+        .sponsor-logo:first-child {
+            margin-top: 0;
+        }
+
+        .sponsor-logo:last-child {
+            margin-bottom: 0;
+        }
+
+        .sponsor-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .sponsors-list {
+            display: block;
+        }
+
+        /* 调整列宽和间距 */
+        .main-content {
+            gap: 20px;
+        }
+
+        /* 统一调整所有列的样式 */
+        .column {
+            font-size: 0.85em;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .column:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .column h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        /* 调整段落间距 */
+        .column p {
+            margin-bottom: 10px;
+        }
+
+        /* 添加响应式间距 */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 20px;
+                grid-template-columns: 1fr;
+            }
+            
+            .column {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-header">
+        <div class="header-container">
+            <!-- 左侧 logo -->
+            <div class="logo-section">
+                <img src="logo.png" alt="COCO" class="logo">
+            </div>
+            
+            <!-- 右侧内容 -->
+            <div class="content-section">
+                <!-- 只保留导航栏 -->
+                <nav class="nav-links">
+                    <a href="#home" class="active">Home</a>
+                    <a href="#people">People</a>
+                    <a href="#dataset">Dataset</a>
+                    <a href="#tasks">Tasks</a>
+                    <a href="#evaluate">Evaluate</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <!-- News section -->
+        <section class="news-section">
+            <h1 class="section-title">News</h1>
+            <ul class="news-list">
+                <li>We are pleased to announce the <a href="#">LVIS 2021 Challenge and Workshop</a> to be held at ICCV.</li>
+                <li>Please note that there will not be a COCO 2021 Challenge, instead, we encourage people to participate in the LVIS 2021 Challenge.</li>
+                <li>We have partnered with the team behind the open-source tool <a href="#">FiftyOne</a> to make it easier to download, visualize, and evaluate COCO</li>
+                <li><a href="#">FiftyOne</a> is an open-source tool facilitating visualization and access to COCO data resources and serves as an evaluation tool for model analysis on COCO.</li>
+            </ul>
+        </section>
+
+        <!-- What is COCO column -->
+        <div class="column">
+            <h2>What is COCO?</h2>
+            <p>COCO is a large-scale object detection, segmentation, and captioning dataset.</p>
+            <p>COCO has several features:</p>
+            <ul class="features-list">
+                <li><span class="checkmark">✓</span> Object segmentation</li>
+                <li><span class="checkmark">✓</span> Recognition in context</li>
+                <li><span class="checkmark">✓</span> Superpixel stuff segmentation</li>
+                <li><span class="checkmark">✓</span> 330K images (>200K labeled)</li>
+                <li><span class="checkmark">✓</span> 1.5 million object instances</li>
+                <li><span class="checkmark">✓</span> 80 object categories</li>
+                <li><span class="checkmark">✓</span> 91 stuff categories</li>
+                <li><span class="checkmark">✓</span> 5 captions per image</li>
+                <li><span class="checkmark">✓</span> 250,000 people with keypoints</li>
+            </ul>
+        </div>
+
+        <!-- Collaborators column -->
+        <div class="column">
+            <h2>Collaborators</h2>
+            <ul class="collaborators-list">
+                <li>Tsung-Yi Lin - Google Brain</li>
+                <li>Genevieve Patterson - MSR, Trash TV</li>
+                <li>Matteo R. Ronchi - Caltech</li>
+                <li>Yin Cui - Google</li>
+                <li>Michael Maire - TTI-Chicago</li>
+                <li>Serge Belongie - Cornell Tech</li>
+                <li>Lubomir Bourdev - WaveOne, Inc.</li>
+                <li>Ross Girshick - FAIR</li>
+                <li>James Hays - Georgia Tech</li>
+                <li>Pietro Perona - Caltech</li>
+                <li>Deva Ramanan - CMU</li>
+                <li>Larry Zitnick - FAIR</li>
+            </ul>
+        </div>
+
+        <!-- Sponsors column -->
+        <div class="column">
+            <h2>Sponsors</h2>
+            <div class="sponsors-list">
+                <img src="https://via.placeholder.com/200x80/eee/999?text=CVDF" class="sponsor-logo">
+                <img src="https://via.placeholder.com/200x60/eee/999?text=Microsoft" class="sponsor-logo">
+                <img src="https://via.placeholder.com/200x70/eee/999?text=Facebook" class="sponsor-logo">
+                <img src="https://via.placeholder.com/200x65/eee/999?text=Mighty+AI" class="sponsor-logo">
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
