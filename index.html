@@ -38,18 +38,18 @@
             content: "•";
             position: absolute;
             left: 10px;
-            color: #7FBFB0;
+            color: #00bfa5;
         }
 
         .news-list a {
-            color: #3498DB;
+            color: #00bfa5;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s ease;
         }
 
         .news-list a:hover {
-            color: #2980B9;
+            color: #00897b;
         }
 
         /* Column styles */
@@ -120,6 +120,11 @@
             transform: translateX(4px);
         }
 
+        .collaborators-list a {
+            color: inherit;
+            text-decoration: none;
+        }
+
         /* Sponsors list */
         .sponsors-list {
             display: block;
@@ -131,13 +136,10 @@
             height: auto;
             margin: 1px 0;
             transition: all 0.3s ease;
-            filter: grayscale(100%);
-            opacity: 0.85;
+            opacity: 1;
         }
 
         .sponsor-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
             transform: scale(1.02);
         }
 
@@ -167,25 +169,20 @@
                             <a href="dataset.html#overview">Overview</a>
                             <a href="dataset.html#download">Download</a>
                             <a href="dataset.html#evaluation">Evaluation</a>
-                            <a href="dataset.html#rules">Rules</a>
-                            <a href="dataset.html#instructions">Instructions</a>
                         </div>
                     </div>
                     <div class="nav-item">
                         <a href="tasks.html">Tasks</a>
                         <div class="dropdown-content">
-                            <a href="tasks.html#task1">Task1 CT Seg</a>
-                            <a href="tasks.html#task2">Task2 CT-MRI Seg</a>
-                            <a href="tasks.html#task3">Task3 Report</a>
-                            <a href="tasks.html#task4">Task4 VQA</a>
+                            <a href="tasks.html#task1">Organ Segmentation</a>
+                            <a href="tasks.html#task2">Medical Report Generation</a>
+                            <a href="tasks.html#task3">Vision Question Answering</a>
                         </div>
                     </div>
                     <div class="nav-item">
                         <a href="evaluate.html">Evaluate</a>
                         <div class="dropdown-content">
                             <a href="evaluate.html#leaderboards">Leaderboards</a>
-                            <a href="evaluate.html#statistics">Statistics</a>
-                            <a href="evaluate.html#submit">Submit Results</a>
                         </div>
                     </div>
                 </nav>
@@ -198,47 +195,38 @@
         <section class="news-section">
             <h1 class="section-title">News</h1>
             <ul class="news-list">
-                <li>We are pleased to announce the <a href="#">LVIS 2021 Challenge and Workshop</a> to be held at ICCV.</li>
-                <li>Please note that there will not be a COCO 2021 Challenge, instead, we encourage people to participate in the LVIS 2021 Challenge.</li>
-                <li>We have partnered with the team behind the open-source tool <a href="#">FiftyOne</a> to make it easier to download, visualize, and evaluate COCO</li>
-                <li><a href="#">FiftyOne</a> is an open-source tool facilitating visualization and access to COCO data resources and serves as an evaluation tool for model analysis on COCO.</li>
+                <li>New homepage is online: Jan 19th, 2025</li>
+
             </ul>
         </section>
 
-        <!-- What is COCO column -->
+        <!-- What is AMOS column -->
         <div class="column">
-            <h2>What is COCO?</h2>
-            <p>COCO is a large-scale object detection, segmentation, and captioning dataset.</p>
-            <p>COCO has several features:</p>
+            <h2>What is AMOS?</h2>
+            <p>AMOS is a large-scale abdominal segmentation, and captioning dataset. AMOS has several features:</p>
             <ul class="features-list">
-                <li><span class="checkmark">✓</span> Object segmentation</li>
-                <li><span class="checkmark">✓</span> Recognition in context</li>
-                <li><span class="checkmark">✓</span> Superpixel stuff segmentation</li>
-                <li><span class="checkmark">✓</span> 330K images (>200K labeled)</li>
-                <li><span class="checkmark">✓</span> 1.5 million object instances</li>
-                <li><span class="checkmark">✓</span> 80 object categories</li>
-                <li><span class="checkmark">✓</span> 91 stuff categories</li>
-                <li><span class="checkmark">✓</span> 5 captions per image</li>
-                <li><span class="checkmark">✓</span> 250,000 people with keypoints</li>
+                <li><span class="checkmark">✓</span> 500+ CT & 100+ MRI scans with 15 abdominal organs annotated</li>
+                <li><span class="checkmark">✓</span> 2000+ CT scans with clinical reports (Findings & Impressions) covering Chest/Abdomen/Pelvis regions </li>
+                <li><span class="checkmark">✓</span> 19,562 vision questions across 6 clinical scopes</li>
             </ul>
         </div>
 
         <!-- Collaborators column -->
         <div class="column">
-            <h2>Collaborators</h2>
+            <h2>Organizers</h2>
             <ul class="collaborators-list">
-                <li>Tsung-Yi Lin - Google Brain</li>
-                <li>Genevieve Patterson - MSR, Trash TV</li>
-                <li>Matteo R. Ronchi - Caltech</li>
-                <li>Yin Cui - Google</li>
-                <li>Michael Maire - TTI-Chicago</li>
-                <li>Serge Belongie - Cornell Tech</li>
-                <li>Lubomir Bourdev - WaveOne, Inc.</li>
-                <li>Ross Girshick - FAIR</li>
-                <li>James Hays - Georgia Tech</li>
-                <li>Pietro Perona - Caltech</li>
-                <li>Deva Ramanan - CMU</li>
-                <li>Larry Zitnick - FAIR</li>
+                <li><a href="https://jiyuanfeng.github.io/" target="_blank">Yuanfeng Ji</a> - HKU</li>
+                <li><a href="https://chongjiange.github.io/" target="_blank">Chongjian Ge</a> - HKU</li>
+                <li><a href="https://scholar.google.com/citations?user=DIy4cA0AAAAJ&hl=en" target="_blank">Haotian Bai</a> - CUHKSZ</li>
+                <li><a href="https://weijiemax.github.io/" target="_blank">Weijie Ma</a> - CUHKSZ</li>
+                <li><a href="https://scholar.google.com/citations?user=oOe6_0IAAAAJ" target="_blank">Jie Yang</a> - CUHKSZ</li>
+                <li><a href="http://guanbinli.com/" target="_blank">Guanbin Li</a> - SYSU</li>
+                <li><a href="https://scholar.google.com/citations?user=1o_qvR0AAAAJ" target="_blank">Shuguang Cui</a> - CUHKSZ</li>
+                <li><a href="https://www.researchgate.net/profile/Xiang-Wan-14" target="_blank">Xiang Wan</a> - SRIBD</li>
+                <li><a href="https://ruimao.zhang/" target="_blank">Ruimao Zhang</a> - SYSU</li>
+                <li><a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=0TTt3QsAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Zhen Li</a> - CUHKSZ</li>
+                <li><a href="https://profiles.stanford.edu/ruijiang-li" target="_blank">Ruijiang Li</a> - Stanford</li>
+                <li><a href="http://luoping.me/" target="_blank">Ping Luo</a> - HKU</li>
             </ul>
         </div>
 
@@ -246,10 +234,9 @@
         <div class="column">
             <h2>Sponsors</h2>
             <div class="sponsors-list">
-                <img src="https://via.placeholder.com/200x80/eee/999?text=CVDF" class="sponsor-logo">
-                <img src="https://via.placeholder.com/200x60/eee/999?text=Microsoft" class="sponsor-logo">
-                <img src="https://via.placeholder.com/200x70/eee/999?text=Facebook" class="sponsor-logo">
-                <img src="https://via.placeholder.com/200x65/eee/999?text=Mighty+AI" class="sponsor-logo">
+                <!-- <img src="logos/hku.png" class="sponsor-logo" style="margin-bottom: 10px;">
+                <img src="logos/sribd.png" class="sponsor-logo" style="margin-bottom: 10px;"> -->
+                <img src="logos/aws.png" class="sponsor-logo" style="margin-bottom: 10px;">
             </div>
         </div>
     </main>

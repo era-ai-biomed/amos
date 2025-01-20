@@ -3,70 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks - AMOS Challenge 2022</title>
+    <title>Tasks - OmniIHC2025</title>
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* Tasks 页面特定样式 */
         .task-section {
+            margin-bottom: 60px;
+        }
+
+        .task-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .task-overview {
             margin-bottom: 40px;
+            line-height: 1.6;
         }
 
-        .task-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
-        .task-details {
+        .evaluation-metrics {
             margin-top: 20px;
         }
 
-        .task-details h3 {
+        .metric-item {
+            margin-bottom: 20px;
+        }
+
+        .metric-name {
+            font-weight: 500;
             color: var(--text-primary);
-            font-size: 1.2em;
-            margin: 15px 0 10px;
-        }
-
-        .features-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .features-list li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .checkmark {
-            color: #2ECC71;
-            font-weight: bold;
-        }
-
-        .task-metrics {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 4px;
-            margin: 15px 0;
-        }
-
-        .metrics-list {
-            list-style: none;
-            margin: 10px 0;
-        }
-
-        .metrics-list li {
             margin-bottom: 8px;
-            font-size: 0.95em;
-            color: var(--text-secondary);
         }
 
-        .task-note {
-            font-size: 0.9em;
+        .metric-description {
             color: var(--text-secondary);
-            font-style: italic;
-            margin-top: 15px;
+            font-size: 0.95em;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -89,25 +62,20 @@
                             <a href="dataset.html#overview">Overview</a>
                             <a href="dataset.html#download">Download</a>
                             <a href="dataset.html#evaluation">Evaluation</a>
-                            <a href="dataset.html#rules">Rules</a>
-                            <a href="dataset.html#instructions">Instructions</a>
                         </div>
                     </div>
                     <div class="nav-item">
                         <a href="tasks.html" class="active">Tasks</a>
                         <div class="dropdown-content">
-                            <a href="tasks.html#task1">Task1 CT Seg</a>
-                            <a href="tasks.html#task2">Task2 CT-MRI Seg</a>
-                            <a href="tasks.html#task3">Task3 Report</a>
-                            <a href="tasks.html#task4">Task4 VQA</a>
+                            <a href="tasks.html#task1">Organ Segmentation</a>
+                            <a href="tasks.html#task2">Medical Report Generation</a>
+                            <a href="tasks.html#task3">Vision Question Answering</a>
                         </div>
                     </div>
                     <div class="nav-item">
                         <a href="evaluate.html">Evaluate</a>
                         <div class="dropdown-content">
                             <a href="evaluate.html#leaderboards">Leaderboards</a>
-                            <a href="evaluate.html#statistics">Statistics</a>
-                            <a href="evaluate.html#submit">Submit Results</a>
                         </div>
                     </div>
                 </nav>
@@ -116,117 +84,81 @@
     </div>
 
     <main class="main-content">
-        <section class="task-section">
+        <!-- Overview Section -->
+        <section id="overview" class="task-section">
             <h1 class="section-title">Challenge Tasks</h1>
-            
-            <div class="task-container">
-                <!-- Task 1 -->
-                <section id="task1" class="column">
-                    <h2>CT Segmentation</h2>
-                    <p>This task focuses on comprehensive evaluation of segmentation methods across large-scale and diverse CT scans.</p>
-                    
-                    <div class="task-details">
-                        <h3>Dataset</h3>
-                        <ul class="features-list">
-                            <li><span class="checkmark">✓</span> 500 CT scans from multiple centers</li>
-                            <li><span class="checkmark">✓</span> 15 annotated abdominal organs</li>
-                            <li><span class="checkmark">✓</span> High-quality manual annotations</li>
-                            <li><span class="checkmark">✓</span> Diverse patient conditions</li>
-                        </ul>
+            <div class="task-content">
+                <p>The AMOS Challenge consists of three main tasks focusing on multi-modal medical image analysis: semantic segmentation, medical report generation, and vision question answering. These tasks aim to advance the development of comprehensive medical image understanding systems.</p>
+            </div>
+        </section>
 
-                        <h3>Evaluation Metrics</h3>
-                        <div class="task-metrics">
-                            <ul class="metrics-list">
-                                <li>• Dice Similarity Coefficient (DSC)</li>
-                                <li>• Normalized Surface Distance (NSD)</li>
-                                <li>• Average Symmetric Surface Distance (ASD)</li>
+        <!-- Task 1 Section -->
+        <section id="task1" class="task-section">
+            <h2 class="section-title">Task 1: Organ Segmentation</h2>
+            <div class="task-content">
+                <div class="evaluation-metrics">
+                    <div class="metric-item">
+                        <div class="metric-name">Task Description</div>
+                        <div class="metric-description">
+                            Accurately segment 15 abdominal organs from CT and MRI scans. This task requires robust algorithms that can handle multi-modal medical images and provide precise organ delineation.
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-name">Evaluation Metrics</div>
+                        <div class="metric-description">
+                            <ul>
+                                <li><strong>Dice Score:</strong> Measures spatial overlap between predicted and ground truth segmentations</li>
+                                <li><strong>Normalized Surface Distance (NSD):</strong> Evaluates boundary accuracy of segmentation results</li>
                             </ul>
                         </div>
-
-                        <p class="task-note">Note: Participants should submit results for all 15 organs to be considered for ranking.</p>
                     </div>
-                </section>
+                </div>
+            </div>
+        </section>
 
-                <!-- Task 2 -->
-                <section id="task2" class="column">
-                    <h2>CT-MRI Segmentation</h2>
-                    <p>This task extends to both CT and MRI modalities, challenging participants to develop robust cross-modality segmentation methods.</p>
-                    
-                    <div class="task-details">
-                        <h3>Dataset</h3>
-                        <ul class="features-list">
-                            <li><span class="checkmark">✓</span> 500 CT + 100 MRI scans</li>
-                            <li><span class="checkmark">✓</span> Same 15 annotated organs</li>
-                            <li><span class="checkmark">✓</span> Consistent annotation protocol</li>
-                            <li><span class="checkmark">✓</span> Cross-modality validation</li>
-                        </ul>
-
-                        <h3>Evaluation Metrics</h3>
-                        <div class="task-metrics">
-                            <ul class="metrics-list">
-                                <li>• Same metrics as Task 1</li>
-                                <li>• Additional cross-modality consistency measures</li>
-                                <li>• Modality-specific performance analysis</li>
+        <!-- Task 2 Section -->
+        <section id="task2" class="task-section">
+            <h2 class="section-title">Task 2: Medical Report Generation</h2>
+            <div class="task-content">
+                <div class="evaluation-metrics">
+                    <div class="metric-item">
+                        <div class="metric-name">Task Description</div>
+                        <div class="metric-description">
+                            Generate comprehensive radiology reports (Findings & Impressions) for CT scans covering Chest/Abdomen/Pelvis regions. The system should produce accurate, clinically relevant, and well-structured reports.
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-name">Evaluation Metrics</div>
+                        <div class="metric-description">
+                            <ul>
+                                <li><strong>GreenScore:</strong> Evaluates both the clinical accuracy and linguistic quality of generated reports</li>
                             </ul>
                         </div>
-
-                        <p class="task-note">Note: Methods will be evaluated on their ability to handle both modalities effectively.</p>
                     </div>
-                </section>
+                </div>
+            </div>
+        </section>
 
-                <!-- Task 3 -->
-                <section id="task3" class="column">
-                    <h2>Report Generation</h2>
-                    <p>This task focuses on generating accurate and comprehensive medical reports from medical images.</p>
-                    
-                    <div class="task-details">
-                        <h3>Dataset</h3>
-                        <ul class="features-list">
-                            <li><span class="checkmark">✓</span> Medical images with corresponding reports</li>
-                            <li><span class="checkmark">✓</span> Structured report templates</li>
-                            <li><span class="checkmark">✓</span> Expert-annotated findings</li>
-                            <li><span class="checkmark">✓</span> Multi-modal information</li>
-                        </ul>
-
-                        <h3>Evaluation Metrics</h3>
-                        <div class="task-metrics">
-                            <ul class="metrics-list">
-                                <li>• Natural Language Generation metrics</li>
-                                <li>• Clinical accuracy assessment</li>
-                                <li>• Report completeness evaluation</li>
+        <!-- Task 3 Section -->
+        <section id="task3" class="task-section">
+            <h2 class="section-title">Task 3: Vision Question Answering</h2>
+            <div class="task-content">
+                <div class="evaluation-metrics">
+                    <div class="metric-item">
+                        <div class="metric-name">Task Description</div>
+                        <div class="metric-description">
+                            Answer medical questions based on CT scan images across 6 clinical scopes. The system should demonstrate understanding of medical imaging and provide accurate responses to clinical queries.
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-name">Evaluation Metrics</div>
+                        <div class="metric-description">
+                            <ul>
+                                <li><strong>Accuracy:</strong> Measures the correctness of model responses to medical visual questions</li>
                             </ul>
                         </div>
-
-                        <p class="task-note">Note: Reports will be evaluated for both linguistic quality and clinical accuracy.</p>
                     </div>
-                </section>
-
-                <!-- Task 4 -->
-                <section id="task4" class="column">
-                    <h2>Visual Question Answering</h2>
-                    <p>This task challenges participants to develop systems that can answer clinical questions about medical images.</p>
-                    
-                    <div class="task-details">
-                        <h3>Dataset</h3>
-                        <ul class="features-list">
-                            <li><span class="checkmark">✓</span> Medical image-question pairs</li>
-                            <li><span class="checkmark">✓</span> Diverse question types</li>
-                            <li><span class="checkmark">✓</span> Expert-validated answers</li>
-                            <li><span class="checkmark">✓</span> Clinical context information</li>
-                        </ul>
-
-                        <h3>Evaluation Metrics</h3>
-                        <div class="task-metrics">
-                            <ul class="metrics-list">
-                                <li>• Answer accuracy</li>
-                                <li>• Clinical relevance</li>
-                                <li>• Response completeness</li>
-                            </ul>
-                        </div>
-
-                        <p class="task-note">Note: Answers will be evaluated for both accuracy and clinical relevance.</p>
-                    </div>
-                </section>
+                </div>
             </div>
         </section>
     </main>

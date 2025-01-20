@@ -3,73 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dataset - AMOS Challenge 2022</title>
+    <title>Dataset - OmniIHC2025</title>
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* Dataset 页面特定样式 */
         .dataset-section {
             margin-bottom: 60px;
         }
 
-        .dataset-section:last-child {
-            margin-bottom: 0;
+        .dataset-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: left;
         }
 
-        .features-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .features-list li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .checkmark {
-            color: #2ECC71;
-            font-weight: bold;
-        }
-
-        .download-links {
+        .dataset-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin: 20px 0;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .download-section {
+            margin-top: 30px;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .download-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .download-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .download-title {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .download-info {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 15px;
         }
 
         .download-button {
             display: inline-block;
-            padding: 12px 24px;
-            background: var(--primary-gradient);
+            padding: 8px 16px;
+            background: var(--primary-color);
             color: white;
-            text-decoration: none;
             border-radius: 4px;
-            text-align: center;
-            transition: all 0.3s ease;
+            text-decoration: none;
+            transition: background 0.2s ease;
         }
 
         .download-button:hover {
-            background: var(--hover-gradient);
-            transform: translateY(-2px);
+            background: var(--primary-dark);
         }
 
-        .rules-list {
-            list-style: decimal;
-            margin-left: 20px;
+        .evaluation-metrics {
             margin-top: 20px;
         }
 
-        .rules-list li {
-            margin-bottom: 15px;
+        .metric-item {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .metric-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .metric-description {
             color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.5;
         }
 
-        .instructions-list {
-            list-style: decimal;
-            margin-left: 20px;
-            margin-top: 20px;
+        .dataset-content ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .dataset-content li {
+            margin-bottom: 10px;
+        }
+
+        .stat-detail {
+            color: var(--text-secondary);
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+
+        .stat-card .download-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: #00A67E;  /* 默认为黑色 */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+        
+        .stat-card .download-button:hover {
+            background: var(--primary-color);  /* 悬停时变为主题色 */
+        }
+
+        .stat-card .download-button:active {
+            background: var(--primary-dark);  /* 点击时的颜色 */
         }
     </style>
 </head>
@@ -92,25 +170,20 @@
                             <a href="dataset.html#overview">Overview</a>
                             <a href="dataset.html#download">Download</a>
                             <a href="dataset.html#evaluation">Evaluation</a>
-                            <a href="dataset.html#rules">Rules</a>
-                            <a href="dataset.html#instructions">Instructions</a>
                         </div>
                     </div>
                     <div class="nav-item">
                         <a href="tasks.html">Tasks</a>
                         <div class="dropdown-content">
-                            <a href="tasks.html#task1">Task1 CT Seg</a>
-                            <a href="tasks.html#task2">Task2 CT-MRI Seg</a>
-                            <a href="tasks.html#task3">Task3 Report</a>
-                            <a href="tasks.html#task4">Task4 VQA</a>
+                            <a href="tasks.html#task1">Organ Segmentation</a>
+                            <a href="tasks.html#task2">Medical Report Generation</a>
+                            <a href="tasks.html#task3">Vision Question Answering</a>
                         </div>
                     </div>
                     <div class="nav-item">
                         <a href="evaluate.html">Evaluate</a>
                         <div class="dropdown-content">
                             <a href="evaluate.html#leaderboards">Leaderboards</a>
-                            <a href="evaluate.html#statistics">Statistics</a>
-                            <a href="evaluate.html#submit">Submit Results</a>
                         </div>
                     </div>
                 </nav>
@@ -122,130 +195,80 @@
         <!-- Overview Section -->
         <section id="overview" class="dataset-section">
             <h1 class="section-title">Dataset Overview</h1>
-            <!-- AMOS22 Dataset -->
-            <div class="column">
-                <h2>AMOS22 Dataset</h2>
-                <p>Multi-organ segmentation dataset for CT and MRI modalities (Task1 & Task2):</p>
-                <ul class="features-list">
-                    <li><span class="checkmark">✓</span> 500 CT scans from multiple centers</li>
-                    <li><span class="checkmark">✓</span> 100 MRI scans</li>
-                    <li><span class="checkmark">✓</span> 15 abdominal organs annotated</li>
-                    <li><span class="checkmark">✓</span> High-quality manual annotations</li>
-                    <li><span class="checkmark">✓</span> Multi-center data collection</li>
-                </ul>
-            </div>
-
-            <!-- AMOS-MM Dataset -->
-            <div class="column">
-                <h2>AMOS-MM Dataset</h2>
-                <p>Multimodal dataset for report generation and visual QA (Task3 & Task4):</p>
-                <ul class="features-list">
-                    <li><span class="checkmark">✓</span> Medical images with corresponding reports</li>
-                    <li><span class="checkmark">✓</span> Clinical question-answer pairs</li>
-                    <li><span class="checkmark">✓</span> Expert-validated annotations</li>
-                    <li><span class="checkmark">✓</span> Structured report templates</li>
-                </ul>
+            <div class="dataset-content">
+                <p>The AMOS dataset includes two main challenges: AMOS22 and AMOS-MM. <br><br> AMOS22 provides 500+ CT & 100+ MRI scans with 15 abdominal organs annotated (for <strong>semantic segmentation</strong>). <br><br> The AMOS-MM dataset includes 2000+ CT scans with comprehensive radiology reports (Findings & Impressions) covering Chest/Abdomen/Pelvis regions (for <strong>medical report generation</strong>), and 19,562 vision questions (for <strong>medical vision question answering</strong>).</p>
+                
+                <div class="dataset-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">600</div>
+                        <div class="stat-label">Scans with 15 Annotated Organs</div>
+                        <div class="stat-detail">(500 CT & 100 MRI)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2000+</div>
+                        <div class="stat-label">Clinical Reports</div>
+                        <div class="stat-detail">Chest, Abdomen & Pelvis</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">19,562</div>
+                        <div class="stat-label">VQA Pairs</div>
+                        <div class="stat-detail">6 Clinical Scopes</div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Download Section -->
         <section id="download" class="dataset-section">
-            <h2 class="section-title">Download Dataset</h2>
-            
-            <!-- AMOS22 Downloads -->
-            <div class="column">
-                <h3>AMOS22 Dataset</h3>
-                <div class="download-links">
-                    <a href="#" class="download-button">Training Set (CT)</a>
-                    <a href="#" class="download-button">Training Set (MRI)</a>
-                    <a href="#" class="download-button">Validation Set</a>
-                    <a href="#" class="download-button">Test Set</a>
-                </div>
-            </div>
-
-            <!-- AMOS-MM Downloads -->
-            <div class="column">
-                <h3>AMOS-MM Dataset</h3>
-                <div class="download-links">
-                    <a href="#" class="download-button">Report Generation Data</a>
-                    <a href="#" class="download-button">VQA Data</a>
-                    <a href="#" class="download-button">Validation Set</a>
-                    <a href="#" class="download-button">Test Set</a>
+            <h2 class="section-title">Download</h2>
+            <div class="dataset-content">
+                <div class="dataset-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">AMOS22</div>
+                        <div class="stat-label">Semantic Segmentation</div>
+                        <a href="https://zenodo.org/records/7262581" 
+                        class="download-button">Zenodo</a>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">AMOS-MM</div>
+                        <div class="stat-label">Report Generation & VQA</div>
+                        <a href="https://www.dropbox.com/scl/fo/q8p0o34clv2f67h86vpvi/AAg1gOwmvBof-aeCWZJdfZA?rlkey=ufvjcoog2jzlbw2t3c96y2vk0&st=16k7rfl2&dl=0" class="download-button">Dropbox</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Evaluation Section -->
         <section id="evaluation" class="dataset-section">
-            <h2 class="section-title">Evaluation Protocol</h2>
-            
-            <!-- AMOS22 Evaluation -->
-            <div class="column">
-                <h3>AMOS22 Metrics</h3>
-                <ul class="features-list">
-                    <li><span class="checkmark">✓</span> Dice Similarity Coefficient (DSC)</li>
-                    <li><span class="checkmark">✓</span> Normalized Surface Distance (NSD)</li>
-                    <li><span class="checkmark">✓</span> Average Symmetric Surface Distance (ASD)</li>
-                </ul>
+            <h2 class="section-title">Evaluation Metrics</h2>
+            <div class="dataset-content">
+                <div class="evaluation-metrics">
+                    <!-- Segmentation Metrics -->
+                    <div class="metric-item">
+                        <div class="metric-name">Segmentation Metrics</div>
+                        <div class="metric-description">
+                            • <strong>Dice Score:</strong> Measures spatial overlap between predicted and ground truth segmentations<br>
+                            • <strong>Normalized Surface Distance (NSD):</strong> Evaluates boundary accuracy of segmentation results
+                        </div>
+                    </div>
+
+                    <!-- Report Generation Metrics -->
+                    <div class="metric-item">
+                        <div class="metric-name">Report Generation Metrics</div>
+                        <div class="metric-description">
+                            • <strong>GreenScore:</strong> Comprehensive evaluation of generated medical reports, considering both clinical accuracy and linguistic quality
+                        </div>
+                    </div>
+
+                    <!-- VQA Metrics -->
+                    <div class="metric-item">
+                        <div class="metric-name">Vision Question Answering Metrics</div>
+                        <div class="metric-description">
+                            • <strong>Accuracy:</strong> Measures the correctness of model responses to medical visual questions across different clinical scopes
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- AMOS-MM Evaluation -->
-            <div class="column">
-                <h3>AMOS-MM Metrics</h3>
-                <ul class="features-list">
-                    <li><span class="checkmark">✓</span> Natural Language Generation metrics</li>
-                    <li><span class="checkmark">✓</span> Clinical accuracy assessment</li>
-                    <li><span class="checkmark">✓</span> Answer accuracy and relevance</li>
-                    <li><span class="checkmark">✓</span> Response completeness</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Rules Section -->
-        <section id="rules" class="dataset-section">
-            <h2 class="section-title">Competition Rules</h2>
-            <ol class="rules-list">
-                <li>Teams must register before downloading any dataset</li>
-                <li>Maximum 5 submissions per day during the validation phase</li>
-                <li>Final results must be accompanied by a technical report</li>
-                <li>Code must be made publicly available after the challenge</li>
-                <li>Teams can participate in any or all tasks</li>
-                <li>Separate submissions required for each task</li>
-            </ol>
-        </section>
-
-        <!-- Instructions Section -->
-        <section id="instructions" class="dataset-section">
-            <h2 class="section-title">Instructions</h2>
-            
-            <!-- AMOS22 Instructions -->
-            <div class="column">
-                <h3>AMOS22 Data Format</h3>
-                <ul class="features-list">
-                    <li><span class="checkmark">✓</span> 3D volumes in NIFTI format</li>
-                    <li><span class="checkmark">✓</span> Standard orientation</li>
-                    <li><span class="checkmark">✓</span> Preprocessed and aligned</li>
-                </ul>
-            </div>
-
-            <!-- AMOS-MM Instructions -->
-            <div class="column">
-                <h3>AMOS-MM Data Format</h3>
-                <ul class="features-list">
-                    <li><span class="checkmark">✓</span> JSON format for reports and QA pairs</li>
-                    <li><span class="checkmark">✓</span> Structured report templates</li>
-                    <li><span class="checkmark">✓</span> Standardized QA format</li>
-                </ul>
-            </div>
-
-            <h3>Getting Started</h3>
-            <ol class="instructions-list">
-                <li>Register on the platform</li>
-                <li>Choose your tasks of interest</li>
-                <li>Download the corresponding datasets</li>
-                <li>Read the detailed documentation</li>
-                <li>Start developing your solution</li>
-            </ol>
         </section>
     </main>
 </body>
