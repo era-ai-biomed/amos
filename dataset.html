@@ -149,6 +149,40 @@
         .stat-card .download-button:active {
             background: var(--primary-dark);  /* 点击时的颜色 */
         }
+
+        .citation-text {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .citation-box {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .citation-box pre {
+            margin: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            background: transparent !important;
+            border: none;
+        }
+
+        .citation-box code {
+            font-family: inherit;
+            background: transparent !important;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -234,6 +268,44 @@
                         <div class="stat-label">Report Generation & VQA</div>
                         <a href="https://drive.google.com/drive/folders/1R4DaN0dT8ef_0l48bHEuswG1p-MsYclX?usp=sharing" class="download-button">Google Drive</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Citation Section -->
+        <section id="citation" class="dataset-section">
+            <h2 class="section-title">Citation</h2>
+            <div class="dataset-content">
+                <div class="citation-text">
+                    If you use the AMOS dataset in your research, please cite our paper:
+                </div>
+                <div class="citation-box">
+                    <pre><code>@article{ji2022amos,
+    title     = {Amos: A large-scale abdominal multi-organ benchmark for versatile 
+                 medical image segmentation},
+    author    = {Ji, Yuanfeng and Bai, Haotian and Ge, Chongjian and Yang, Jie 
+                 and Zhu, Ye and Zhang, Ruimao and Li, Zhen and Zhanng, Lingyan 
+                 and Ma, Wanling and Wan, Xiang and others},
+    journal   = {Advances in neural information processing systems},
+    volume    = {35},
+    pages     = {36722--36732},
+    year      = {2022}
+}</code></pre>
+                </div>
+
+                <div class="citation-text" style="margin-top: 30px;">
+                    If you use GREEN-Score for the evaluation of medical report generation, please cite:
+                </div>
+                <div class="citation-box">
+                    <pre><code>@article{ostmeier2024green,
+    title     = {GREEN: Generative Radiology Report Evaluation and Error Notation},
+    author    = {Ostmeier, Sophie and Xu, Justin and Chen, Zhihong and Varma, Maya 
+                 and Blankemeier, Louis and Bluethgen, Christian and Michalson, 
+                 Arne Edward and Moseley, Michael and Langlotz, Curtis 
+                 and Chaudhari, Akshay S and others},
+    journal   = {arXiv preprint arXiv:2405.03595},
+    year      = {2024}
+}</code></pre>
                 </div>
             </div>
         </section>
