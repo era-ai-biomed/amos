@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks - OmniIHC2025</title>
     <link rel="stylesheet" href="shared.css">
+    <!-- 首先加载highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <style>
         .task-section {
             margin-bottom: 60px;
@@ -41,7 +43,48 @@
             font-size: 0.95em;
             line-height: 1.5;
         }
+
+        /* 重置所有highlight.js的样式 */
+        .hljs {
+            display: block;
+            overflow-x: auto;
+            padding: 1em;
+            background: white !important;
+            color: #383a42;
+        }
+
+        pre {
+            background: white !important;
+            margin: 0;
+            padding: 15px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+        }
+
+        pre code {
+            background: white !important;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+        }
+
+        /* 语法高亮颜色 */
+        .hljs-comment { color: #6a8759 !important; }  /* 注释 */
+        .hljs-string { color: #2c8091 !important; }   /* 字符串 */
+        .hljs-number { color: #6897bb !important; }   /* 数字 */
+        .hljs-keyword { color: #cc7832 !important; }  /* 关键字 */
+        .hljs-literal { color: #cc7832 !important; }  /* 字面量 */
+        .hljs-function { color: #a7885c !important; } /* 函数 */
     </style>
+
+    <!-- 初始化脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="site-header">
@@ -151,8 +194,56 @@
                         <div class="metric-name">Evaluation Metrics</div>
                         <div class="metric-description">
                             <ul>
-                                <li><strong>GreenScore</strong>: Evaluates both the clinical accuracy and linguistic quality of generated reports</li>
+                                <li><strong>GreenScore</strong>: Evaluates both the clinical accuracy and linguistic quality of generated reports, example code is shown below.</li>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-name">Example Code</div>
+                        <div class="metric-description">
+                            <pre><code class="hljs language-python">
+from green_score import GREEN
+# pip install green-score
+
+gt_report = {
+    "amos_0001.nii.gz": {
+        "findings": {
+            "abdomen": "The liver demonstrates normal size and contour..."
+        }
+    }
+}
+
+pred_report = {
+    "amos_0001.nii.gz": {
+        "findings": {
+            "abdomen": "The liver is normal in size with smooth contour,.."
+        }
+    }
+}
+
+# Initialize GREEN model
+model = GREEN(
+    model_id_or_path="StanfordAIMI/GREEN-radllama2-7b",
+    do_sample=False,
+    batch_size=1,
+    cuda=True
+)
+
+# Compute GREEN score
+refs = [gt_report["amos_0001.nii.gz"]["findings"]["abdomen"]]
+hyps = [pred_report["amos_0001.nii.gz"]["findings"]["abdomen"]]
+
+mean_score, scores, explanations = model(refs=refs, hyps=hyps)
+
+print(f"GREEN Score: {mean_score:.3f}")
+print(f"Explanation: {explanations[0]}")
+
+return {
+    "amos_id": "amos_0001.nii.gz",
+    "green_score": float(scores[0]),
+    "explanation": explanations[0]
+}
+                            </code></pre>
                         </div>
                     </div>
                 </div>
